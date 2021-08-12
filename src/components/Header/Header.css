@@ -3,7 +3,7 @@
   justify-content: space-evenly;
   border-bottom: 0.1px solid lightgray;
   padding: 10px 0;
-  position: static;
+  position: sticky;
   top: 0;
   background-color: white;
   width: 100%;

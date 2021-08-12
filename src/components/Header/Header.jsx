@@ -9,8 +9,12 @@ import {
   Notifications,
   SupervisorAccount,
 } from "@material-ui/icons";
+import { auth } from "../../Firebase";
 
 const Header = () => {
+  const onLogout = () => {
+    auth.signOut();
+  };
   return (
     <div className="header">
       {/* Header Left */}
@@ -22,7 +26,7 @@ const Header = () => {
         {/* Header Seacrh */}
         <div className="header__search">
           <SearchIcon />
-          <input type="text" />
+          <input placeholder="Search" type="text" />
         </div>
       </div>
       {/* Header Right */}
@@ -35,6 +39,7 @@ const Header = () => {
         <HeaderOption
           avatar="https://avatars.githubusercontent.com/u/69011172?v=4"
           title="Me"
+          onClick={onLogout}
         />
       </div>
     </div>
