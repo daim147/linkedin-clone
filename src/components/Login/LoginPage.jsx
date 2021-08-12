@@ -3,7 +3,7 @@ import image from "../../assests/linkedin.png";
 import { auth } from "../../Firebase";
 import "./LoginPage.css";
 import { useDispatch } from "react-redux";
-import { nameFetch, userPending } from "../../features/userSlice";
+import { nameFetch, userPending, logout } from "../../features/userSlice";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -44,7 +44,10 @@ const LoginPage = () => {
         //     )
         //   )
       )
-      .catch((error) => alert(error));
+      .catch((error) => {
+        alert(error);
+        dispatch(logout());
+      });
   };
 
   //   ! Signin Current User
@@ -67,7 +70,10 @@ const LoginPage = () => {
       //         })
       //       );
       //   })
-      .catch((error) => alert(error));
+      .catch((error) => {
+        alert(error);
+        dispatch(logout());
+      });
   };
   return (
     <div className="login">
