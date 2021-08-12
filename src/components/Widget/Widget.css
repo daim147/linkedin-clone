@@ -1,0 +1,47 @@
+.widget {
+  position: sticky;
+  top: 80px;
+  flex: 0.2;
+  background-color: white;
+  border: 1px solid lightgray;
+  padding-bottom: 10px;
+  border-radius: 10px;
+  height: fit-content;
+}
+.widget__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+.widget__header > h2 {
+  font-size: 16px;
+  font-family: 400;
+}
+.news__article {
+  display: flex;
+  padding: 10px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+.news__article:hover {
+  background-color: whitesmoke;
+}
+.news__articleLeft {
+  color: #0a66c2 !important;
+  margin-right: 5px;
+  align-self: center;
+}
+.news__articleLeft > .MuiSvgIcon-root {
+  font-size: 15px;
+}
+.news__articleRight {
+  flex: 1;
+}
+.news__articleRight > h4 {
+  font-size: 14px;
+}
+.news__articleRight > p {
+  font-size: 12px;
+  color: gray;
+}

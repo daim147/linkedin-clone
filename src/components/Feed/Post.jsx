@@ -6,14 +6,40 @@ import {
   ThumbUpSharp,
 } from "@material-ui/icons";
 import React from "react";
+import { motion } from "framer-motion";
 import FeedOptoin from "./FeedOptoin";
 import "./Post.css";
 
-const Post = ({ name, description, photoUrl, message }) => {
+const variant = {
+  initial: {
+    opacity: 0,
+    y: -100,
+  },
+  final: (index) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: index * 0.2,
+      type: "spring",
+      duration: 1,
+      bounce: 0.7,
+    },
+  }),
+};
+
+const Post = ({ name, description, photoUrl, message, index }) => {
   return (
-    <div className="post">
+    <motion.div
+      layout
+      custom={index}
+      transition={{ duration: 0.6 }}
+      initial="initial"
+      animate="final"
+      variants={variant}
+      className="post"
+    >
       <div className="post__header">
-        <Avatar />
+        <Avatar src={photoUrl}>{name[0]}</Avatar>
         <div className="post__info">
           <h2>{name}</h2>
           <p>{description}</p>
@@ -28,7 +54,7 @@ const Post = ({ name, description, photoUrl, message }) => {
         <FeedOptoin Icon={ShareOutlined} title="Share" color="gray" />
         <FeedOptoin Icon={SendOutlined} title="Send" color="gray" />
       </div>
-    </div>
+    </motion.div>
   );
 };
 

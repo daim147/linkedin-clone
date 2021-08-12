@@ -8,13 +8,14 @@ import LoginPage from "./components/Login/LoginPage";
 import { useDispatch } from "react-redux";
 import { login, logout } from "./features/userSlice";
 import { auth } from "./Firebase";
+import Widget from "./components/Widget/Widget";
 
 function App() {
   const user = useSelector((state) => state.userAuth.user);
+  const isFetch = useSelector((state) => state.userAuth.isFetch);
   const dispatch = useDispatch();
   useEffect(() => {
-    auth.onAuthStateChanged((userAuth) => {
-      console.log(userAuth);
+    const unSubscribe = auth.onAuthStateChanged((userAuth) => {
       if (userAuth) {
         dispatch(
           login({
@@ -24,11 +25,13 @@ function App() {
             displayName: userAuth.displayName,
           })
         );
-      } else {
+      } else if (!userAuth) {
         dispatch(logout());
       }
     });
-  }, [dispatch]);
+
+    return () => unSubscribe();
+  }, [dispatch, isFetch]);
   if (!user) {
     return <LoginPage />;
   }
@@ -38,6 +41,7 @@ function App() {
       <div className="app__body">
         <Sidebar />
         <Feed />
+        <Widget />
       </div>
     </div>
   );

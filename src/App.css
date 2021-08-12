@@ -1,5 +1,7 @@
 .app__body {
   display: flex;
+  margin: 35px 20px 0;
+  max-width: 1200px;
 }
 .app {
   background-color: #f3f2ef;

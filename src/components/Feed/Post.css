@@ -19,10 +19,16 @@
   font-size: 15px;
 }
 .post__body {
+  font-size: 15px;
+  font-weight: 500;
   overflow-wrap: break-word;
+  margin: 5px 0;
 }
 
 .post__buttons {
   display: flex;
+  height: max-content;
+  /* align-items: center; */
   justify-content: space-evenly;
+  /* background-color: red; */
 }

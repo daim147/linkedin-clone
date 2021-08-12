@@ -12,8 +12,11 @@ const userSlice = createSlice({
     logout(state) {
       state.user = null;
     },
+    nameFetch(state, action) {
+      state.isFetch = action.payload;
+    },
   },
 });
 const userReducers = userSlice.reducer;
-const { login, logout } = userSlice.actions;
-export { login, logout, userReducers };
+const { login, logout, nameFetch } = userSlice.actions;
+export { login, logout, nameFetch, userReducers };
