@@ -3,7 +3,7 @@ import image from "../../assests/linkedin.png";
 import { auth } from "../../Firebase";
 import "./LoginPage.css";
 import { useDispatch } from "react-redux";
-import { nameFetch } from "../../features/userSlice";
+import { nameFetch, userPending } from "../../features/userSlice";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -18,7 +18,8 @@ const LoginPage = () => {
       alert("Please Enter Your Full Name");
       return;
     }
-    dispatch(nameFetch(false));
+    dispatch(userPending());
+
     auth
       .createUserWithEmailAndPassword(email, password)
       .then(
@@ -49,6 +50,8 @@ const LoginPage = () => {
   //   ! Signin Current User
   const loginUser = (e) => {
     e.preventDefault();
+    dispatch(userPending());
+
     auth
       .signInWithEmailAndPassword(email, password)
 

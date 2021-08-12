@@ -1,4 +1,6 @@
 import React, { useEffect } from "react";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Loader from "react-loader-spinner";
 import "./App.css";
 import Feed from "./components/Feed/Feed";
 import Header from "./components/Header/Header";
@@ -34,6 +36,21 @@ function App() {
   }, [dispatch, isFetch]);
   if (!user) {
     return <LoginPage />;
+  }
+  if (user === "pending") {
+    return (
+      <div
+        style={{
+          width: "100%",
+          height: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Loader type="ThreeDots" color="#0a66c2" height={80} width={80} />
+      </div>
+    );
   }
   return (
     <div className="app">
